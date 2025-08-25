@@ -6,6 +6,15 @@ WORKDIR /app
 # 复制项目文件
 COPY . /app
 
+# 彻底清理并替换为阿里云 Debian Bookworm 源（避免其他版本源干扰）
+RUN rm -f /etc/apt/sources.list /etc/apt/sources.list.d/* && \
+    echo "deb http://mirrors.aliyun.com/debian/ bookworm main non-free contrib non-free-firmware" > /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.aliyun.com/debian/ bookworm main non-free contrib non-free-firmware" >> /etc/apt/sources.list && \
+    echo "deb http://mirrors.aliyun.com/debian-security/ bookworm-security main" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.aliyun.com/debian-security/ bookworm-security main" >> /etc/apt/sources.list && \
+    echo "deb http://mirrors.aliyun.com/debian/ bookworm-updates main non-free contrib non-free-firmware" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.aliyun.com/debian/ bookworm-updates main non-free contrib non-free-firmware" >> /etc/apt/sources.list
+
 # 安装Python依赖和其他必要工具
 RUN pip install --no-cache-dir -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple && \
     apt update && \
