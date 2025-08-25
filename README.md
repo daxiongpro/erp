@@ -16,6 +16,13 @@
 docker-compose up --build -d
 ~~~
 
+~~~
+# 关闭所有服务
+docker-compose down
+# 关机或关闭服务后重启，无需 --build
+docker-compose up -d
+~~~
+
 ### 方法二 拉取代码后，拉取build好的镜像，然后up
 ~~~
 docker pull registry.cn-hangzhou.aliyuncs.com/tfh/erp-nginx
@@ -26,9 +33,14 @@ docker tag registry.cn-hangzhou.aliyuncs.com/tfh/erp-web erp-web
 docker tag registry.cn-hangzhou.aliyuncs.com/tfh/erp-backend erp-backend
 docker-compose up -d
 ~~~
-* 访问 127.0.0.1:8080查看效果
+* 访问 127.0.0.1:8080查看效果。我是部署在 linux 虚拟机，因此本地游览器访问：http://172.21.91.190:8081/ 
+* 账号密码：管理员-123456
 * 数据库防止和本地的数据库端口冲突，开放在3307端口
 * 后端端口在8000上，使用nginx对该端口进行了代理转发
+
+#### 常见问题
+
+- 首页登录无响应：删除 nginx/log 下的所有文件，在游览器端按 F5 刷新试试。
 
 ## 本地运行流程（不推荐）
 
