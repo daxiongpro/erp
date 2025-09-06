@@ -13,7 +13,10 @@
 
 ### 方法一 拉取代码后，本地build up
 ~~~
+# 生产模式
 docker-compose up --build -d
+# 开发者模式
+docker-compose -f docker-compose.dev.yml up --build -d
 ~~~
 
 ~~~
@@ -21,6 +24,8 @@ docker-compose up --build -d
 docker-compose down
 # 关机或关闭服务后重启，无需 --build
 docker-compose up -d
+# 开发者模式
+docker-compose -f docker-compose.dev.yml up -d
 ~~~
 
 ### 方法二 拉取代码后，拉取build好的镜像，然后up
@@ -33,7 +38,8 @@ docker tag registry.cn-hangzhou.aliyuncs.com/tfh/erp-web erp-web
 docker tag registry.cn-hangzhou.aliyuncs.com/tfh/erp-backend erp-backend
 docker-compose up -d
 ~~~
-* 访问 127.0.0.1:8080查看效果。我是部署在 linux 虚拟机，因此本地游览器访问：http://172.21.91.190:8081/ 
+* 访问 127.0.0.1:8080查看效果。
+* 我是部署在 linux 虚拟机，因此本地游览器访问：生产模式：http://172.21.91.190:8081/ ；开发模式： http://172.21.91.190:8080/
 * 账号密码：管理员-123456
 * 数据库防止和本地的数据库端口冲突，开放在3307端口
 * 后端端口在8000上，使用nginx对该端口进行了代理转发

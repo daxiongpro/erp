@@ -27,12 +27,21 @@ module.exports = {
       },
     },
   },
+  // devServer: {
+  //   // proxy: {
+  //   //   "/api": {
+  //   //     target: "http://114.218.158.78:12223",
+  //   //     changeOrigin: true,
+  //   //   },
+  //   // },
+  // },
   devServer: {
-    // proxy: {
-    //   "/api": {
-    //     target: "http://114.218.158.78:12223",
-    //     changeOrigin: true,
-    //   },
-    // },
-  },
+      // public: '172.21.91.190:8080', // 指定 HMR 使用的地址
+      proxy: {
+        '/api': {
+          target: 'http://172.21.91.190:8000',  // 后端地址
+          changeOrigin: true,
+        }
+      }
+    }
 };
