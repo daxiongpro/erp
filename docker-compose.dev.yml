@@ -18,7 +18,7 @@ services:
     build: 
       context: ./frontend/               # 构建上下文目录
       dockerfile: Dockerfile.dev         # 指定要使用的 Dockerfile 文件名
-    command: yarn serve
+    # command: yarn serve
     # command: yarn serve --host 0.0.0.0
     volumes:
       - ./frontend:/app
