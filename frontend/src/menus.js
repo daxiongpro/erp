@@ -34,6 +34,11 @@ export default [
     ]
   },
   {
+    key: '11', name: '验货管理', icon: 'shopping-cart', submenus: [
+      { key: '/inspection/inspection_create', name: '验货派发' },
+    ]
+  },
+  {
     key: '5', name: '销售管理', icon: 'shopping', submenus: [
       { key: '/sale/sale_create', name: '销售开单' },
       { key: '/sale/sale_record', name: '销售记录' },

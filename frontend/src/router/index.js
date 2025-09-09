@@ -12,6 +12,7 @@ import warehouse from './warehouse'
 import finance from './finance'
 import production from './production'
 import yindao from './yindao'
+import inspection from './inspection'
 
 
 const index = {
@@ -28,6 +29,6 @@ const index = {
   ]
 }
 
-const routes = [index, user, yindao, account, manage, system, report, basicData, goods, purchasing, sale, warehouse, finance, production];
+const routes = [index, user, yindao, account, manage, system, report, basicData, goods, purchasing, sale, warehouse, finance, production, inspection];
 
 export default new VueRouter({ mode: 'hash', routes })
